@@ -16,14 +16,14 @@ public class Clientes {
     public String apellidosCliente;
     public String emailCliente;
     public String celularCliente;
-    public String contrasenaCliente;
+    public int contrasenaCliente;
     public String fechaNacimientoCliente;
     
     //constructor
     
     //getters y setters
 
-    public Clientes(String usuario, String nombresCliente, String apellidosCliente, String emailCliente, String celularCliente, String contrasenaCliente, String fechaNacimientoCliente) {
+    public Clientes(String usuario, String nombresCliente, String apellidosCliente, String emailCliente, String celularCliente, int contrasenaCliente, String fechaNacimientoCliente) {
         this.usuario = usuario;
         this.nombresCliente = nombresCliente;
         this.apellidosCliente = apellidosCliente;
@@ -73,11 +73,11 @@ public class Clientes {
         this.celularCliente = celularCliente;
     }
 
-    public String getContrasenaCliente() {
+    public int getContrasenaCliente() {
         return contrasenaCliente;
     }
 
-    public void setContrasenaCliente(String contrasenaCliente) {
+    public void setContrasenaCliente(int contrasenaCliente) {
         this.contrasenaCliente = contrasenaCliente;
     }
 

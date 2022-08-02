@@ -167,12 +167,12 @@ public class LOGIN extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordActionPerformed
 
     private void lblLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblLoginActionPerformed
-        String[] usuario = new String[2];
-        usuario[0] = "s2";
-        usuario[1] = "y9";
+        String[] usuario = new String[10];
+        usuario[0] = "admin";
+        //usuario[1] = "y9";
         String[] contraseña = new String[2];
         contraseña[0] = "22";
-        contraseña[1] = "99";
+        //contraseña[1] = "99";
 
         String user = new String(txtUsuario.getText());
         boolean checkUser = false;
@@ -192,7 +192,7 @@ public class LOGIN extends javax.swing.JFrame {
             } else if (checkUser == false && checkPass == true) {
                 JOptionPane.showMessageDialog(rootPane, "Usuario incorrecto");
             } else if (checkUser == true && checkPass == true) {
-                InterfazCliente GUI = new InterfazCliente();
+                Graphics GUI = new Graphics();
                 GUI.setVisible(true);
             }
         } else {
