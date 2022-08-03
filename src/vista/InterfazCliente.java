@@ -13,6 +13,8 @@ import c2r5.Conexion;
 import Entidades.Clientes;
 import javax.swing.table.DefaultTableModel;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.table.TableModel;
 public class InterfazCliente extends javax.swing.JFrame {
     Conexion con=new Conexion();
@@ -21,11 +23,53 @@ public class InterfazCliente extends javax.swing.JFrame {
     DefaultTableModel modelo;
     public InterfazCliente() {
         initComponents();
+        System.out.println("Holis");
+        consulta();
+        //cargarDatos();
+        System.out.println("No pude");
     }
     public void cargarDatos(){
-        modelo=(DefaultTableModel)JTablaCliente.getModel();
+        try{
+            modelo=(DefaultTableModel)JTablaCliente.getModel();
         CrudClienteInicial c = new CrudClienteInicial();
         JTablaCliente.setModel((TableModel) c.obtener());
+        }catch(Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+    public void eliminardatos() {
+        modelo=new DefaultTableModel();
+        modelo.addColumn("Documento");
+        modelo.addColumn("Nombres");
+        modelo.addColumn("Apellidos");
+        modelo.addColumn("Telefono");
+        JTablaCliente.setModel(modelo);
+    }
+    
+    public void eliminarformulario(){
+        txtUsuario.setText("");
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEmail.setText("");
+        txtCelular.setText("");
+        txtContrasena.setText("");
+        txtFecha.setText("");
+    }
+    public void consulta() {
+        CrudClienteInicial usuario=new CrudClienteInicial();
+        ArrayList<Clientes> listaClientes;
+        listaClientes=usuario.obtener();
+        for (int i = 0; i < listaClientes.size(); i++) {
+            String arregloCliente[]={
+                listaClientes.get(i).getUsuario(), 
+                listaClientes.get(i).getNombresCliente(),
+                listaClientes.get(i).getApellidosCliente(),
+                listaClientes.get(i).getEmailCliente(),
+                listaClientes.get(i).getCelularCliente(),
+                String.valueOf(listaClientes.get(i).getContrasenaCliente()),
+                listaClientes.get(i).getFechaNacimientoCliente()};
+            modelo.addRow(arregloCliente);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,7 +124,7 @@ public class InterfazCliente extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -102,6 +146,7 @@ public class InterfazCliente extends javax.swing.JFrame {
         });
 
         btnModificar.setText("MODIFICAR");
+        btnModificar.setEnabled(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -109,6 +154,7 @@ public class InterfazCliente extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.setEnabled(false);
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -231,16 +277,10 @@ public class InterfazCliente extends javax.swing.JFrame {
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(85, 85, 85)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(248, 248, 248)))
@@ -267,8 +307,7 @@ public class InterfazCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -276,6 +315,8 @@ public class InterfazCliente extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -305,7 +346,11 @@ public class InterfazCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+        Clientes cli = new Clientes(txtUsuario.getText(), txtNombre.getText(), txtApellido.getText(), txtEmail.getText(), txtCelular.getText(), Integer.parseInt(txtContrasena.getText()), txtFecha.getText());
+        CrudCliente mod = new CrudCliente();
+        mod.modificarCliente(cli);
+        eliminarformulario();
+        cargarDatos();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -317,20 +362,6 @@ public class InterfazCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirActionPerformed
-        /*String doc;
-        String nom;
-        String ape;
-        String tel;
-        doc=txtIdentificacion.getText();
-        nom=txtNombre.getText();
-        ape=txtApellidos.getText();
-        tel=txtTelefono.getText();
-        usuariovo usuario=new usuariovo(doc,nom,ape,tel);
-        usuariodao usuarion=new usuariodao();
-        usuarion.registrarusuario(usuario);
-        eliminardatos();
-        consulta();*/
-        CRUD.CrudCliente c= new CrudCliente();
         String usu=txtUsuario.getText();
         String nom=txtNombre.getText();
         String ape=txtApellido.getText();
@@ -339,8 +370,10 @@ public class InterfazCliente extends javax.swing.JFrame {
         int co=Integer.parseInt(txtContrasena.getText());
         //LocalDate fe=LocalDate.parse(txtFecha.getText());
         String fe=txtFecha.getText();
-        c.crearCliente(usu, nom, ape, em, cel,co,fe);
-        
+        Clientes nuevo= new Clientes(usu, nom, ape, em, cel,co,fe);
+        CrudClienteInicial c= new CrudClienteInicial();
+        eliminardatos();
+        consulta();
     }//GEN-LAST:event_btnAñadirActionPerformed
 
     private void JTablaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTablaClienteMouseClicked
@@ -365,9 +398,21 @@ public class InterfazCliente extends javax.swing.JFrame {
         int row =evt.getY()/JTablaCliente.getRowHeight();
         if(row<JTablaCliente.getRowCount()&&row>=0&&column<JTablaCliente.getColumnCount()&& column>=0){
             Object value=JTablaCliente.getValueAt(row, column);
-            //if(value instanceof JButton){
-                
-            //}
+            if(value instanceof JButton){
+                ((JButton)value).doClick();
+                JButton boton=(JButton)value;
+            
+                if(boton.getName().equals("m")){
+                    //evento modificar
+                    btnModificar.setEnabled(true);
+                    System.out.println("Click en el boton modificar");
+                }
+                if(boton.getName().equals("e")){
+                    //evento eliminar
+                    btnEliminar.setEnabled(true);
+                    System.out.println("Click en el boton eliminar");
+                }
+            }
         }
     }//GEN-LAST:event_JTablaClienteMouseClicked
 

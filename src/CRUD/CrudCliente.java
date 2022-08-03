@@ -30,7 +30,9 @@ public class CrudCliente {
                     statement.setInt(6, contrasenaCliente);
                     statement.setString(7, fechaNacimientoCliente);
                     //actualiza la base de datos
+                    
                int rowsInserted = statement.executeUpdate();
+               statement.close();
             conn.close();
             if ( rowsInserted > 0) {
                 System.out.println("Registro añadido exitosamente");

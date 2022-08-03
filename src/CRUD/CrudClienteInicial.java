@@ -65,6 +65,8 @@ public class CrudClienteInicial implements CRUD<Clientes>{
                 Clientes c = new Clientes(usuario, nombre, apellido,email,celular,contraseña,fechaNacimiento);
                 clientes.add(c);
             }
+            conn.close();
+            statement.close();
         }  catch(SQLException e){
            System.out.println("Error obteniendo cliente");
        }

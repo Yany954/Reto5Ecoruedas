@@ -128,8 +128,8 @@
                     <Column editable="true" title="APELLIDOS" type="java.lang.String"/>
                     <Column editable="true" title="EMAIL" type="java.lang.String"/>
                     <Column editable="true" title="CELULAR" type="java.lang.String"/>
-                    <Column editable="true" title="CONTRASE&#xd1;A" type="java.lang.Integer"/>
-                    <Column editable="true" title="FECHA NACIMIENTO" type="java.lang.Object"/>
+                    <Column editable="true" title="CONTRASE&#xd1;A" type="java.lang.String"/>
+                    <Column editable="true" title="FECHA NACIMIENTO" type="java.lang.String"/>
                   </Table>
                 </Property>
               </Properties>
@@ -150,6 +150,7 @@
         <Component class="javax.swing.JButton" name="btnModificar">
           <Properties>
             <Property name="text" type="java.lang.String" value="MODIFICAR"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
@@ -158,6 +159,7 @@
         <Component class="javax.swing.JButton" name="btnEliminar">
           <Properties>
             <Property name="text" type="java.lang.String" value="ELIMINAR"/>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminarActionPerformed"/>
@@ -211,20 +213,11 @@
                               </Group>
                               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="txtContrasena" min="-2" pref="102" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel7" min="-2" pref="74" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="jLabel8" min="-2" pref="99" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
+                                  <Component id="txtContrasena" min="-2" pref="102" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" min="-2" pref="99" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -261,7 +254,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -272,6 +264,8 @@
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtContrasena" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
