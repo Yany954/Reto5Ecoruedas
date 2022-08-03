@@ -34,7 +34,7 @@ public class CrudClienteInicial implements CRUD<Clientes>{
                int rowsInserted = statement.executeUpdate();
             conn.close();
             if ( rowsInserted > 0) {
-                //System.out.println("Registro añadido exitosamente");
+                System.out.println("Registro añadido exitosamente generico");
                 return true;
             }
        }  catch(SQLException e){
@@ -73,7 +73,7 @@ public class CrudClienteInicial implements CRUD<Clientes>{
 
     @Override
     public boolean actualizar(Clientes objeto) {
-        try(Connection conn = Conexion.conectar()){
+        /*try(Connection conn = Conexion.conectar()){
             //hacer ifs de cuando escoja cada tipo de checkbox
             String sql="UPDATE cliente SET cliente_username =  WHERE FROM cliente";
             Statement statement = conn.createStatement();
@@ -92,13 +92,20 @@ public class CrudClienteInicial implements CRUD<Clientes>{
             return true;
         }  catch(SQLException e){
            System.out.println("Error obteniendo cliente");
-       }
+       }*/
        return false;
     }
 
     @Override
     public boolean remover(Clientes objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        /*Conexion conex=new Conexion();
+        try{
+            
+        } catch(SQLException e){
+           System.out.println("Error eliminando cliente");
+       }*/
+        return false;
     }
+
     
 }

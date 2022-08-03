@@ -9,6 +9,7 @@ package Entidades;
  *
  * @author yanyg
  */
+import java.time.LocalDate;
 public class Clientes {
     //atributos, es decir campos
     public String usuario;
@@ -17,8 +18,8 @@ public class Clientes {
     public String emailCliente;
     public String celularCliente;
     public int contrasenaCliente;
+    //public LocalDate fechaNacimientoCliente;
     public String fechaNacimientoCliente;
-    
     //constructor
     
     //getters y setters

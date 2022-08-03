@@ -5,21 +5,28 @@
  */
 package vista;
 
-import javax.swing.JButton;
+import CRUD.CrudCliente;
+import CRUD.CrudClienteInicial;
+import  java.sql.*;
+import c2r5.Conexion;
 
-/**
- *
- * @author yanyg
- */
+import Entidades.Clientes;
+import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
+import javax.swing.table.TableModel;
 public class InterfazCliente extends javax.swing.JFrame {
-
-    /**
-     * Creates new form InterfazCliente
-     */
+    Conexion con=new Conexion();
+    Connection cn;
+    Statement st;
+    DefaultTableModel modelo;
     public InterfazCliente() {
         initComponents();
     }
-
+    public void cargarDatos(){
+        modelo=(DefaultTableModel)JTablaCliente.getModel();
+        CrudClienteInicial c = new CrudClienteInicial();
+        JTablaCliente.setModel((TableModel) c.obtener());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,7 +45,6 @@ public class InterfazCliente extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -156,8 +162,7 @@ public class InterfazCliente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel2.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
-        jLabel2.setText("DATOS");
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DATOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Roboto Black", 0, 12))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
         jLabel3.setText("USUARIO");
@@ -211,8 +216,7 @@ public class InterfazCliente extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -248,9 +252,7 @@ public class InterfazCliente extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(12, 12, 12)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel5)
@@ -271,7 +273,7 @@ public class InterfazCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 11, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,10 +295,10 @@ public class InterfazCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
 
         pack();
@@ -328,6 +330,17 @@ public class InterfazCliente extends javax.swing.JFrame {
         usuarion.registrarusuario(usuario);
         eliminardatos();
         consulta();*/
+        CRUD.CrudCliente c= new CrudCliente();
+        String usu=txtUsuario.getText();
+        String nom=txtNombre.getText();
+        String ape=txtApellido.getText();
+        String em=txtEmail.getText();
+        String cel=txtCelular.getText();
+        int co=Integer.parseInt(txtContrasena.getText());
+        //LocalDate fe=LocalDate.parse(txtFecha.getText());
+        String fe=txtFecha.getText();
+        c.crearCliente(usu, nom, ape, em, cel,co,fe);
+        
     }//GEN-LAST:event_btnAñadirActionPerformed
 
     private void JTablaClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTablaClienteMouseClicked
@@ -352,9 +365,9 @@ public class InterfazCliente extends javax.swing.JFrame {
         int row =evt.getY()/JTablaCliente.getRowHeight();
         if(row<JTablaCliente.getRowCount()&&row>=0&&column<JTablaCliente.getColumnCount()&& column>=0){
             Object value=JTablaCliente.getValueAt(row, column);
-            if(value instanceof JButton){
+            //if(value instanceof JButton){
                 
-            }
+            //}
         }
     }//GEN-LAST:event_JTablaClienteMouseClicked
 
@@ -400,7 +413,6 @@ public class InterfazCliente extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

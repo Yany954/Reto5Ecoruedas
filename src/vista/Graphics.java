@@ -3,7 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vista;
-
+import CRUD.*;
+import Entidades.*;
+import c2r5.*;
+import java.util.ArrayList;
 /**
  *
  * @author nelly
@@ -13,6 +16,7 @@ public class Graphics extends javax.swing.JFrame {
     /**
      * Creates new form Graphics
      */
+    //ArrayList<Clientes>listaClientes=ArrayList<Cliente>();
     public Graphics() {
         initComponents();
     }
@@ -29,13 +33,13 @@ public class Graphics extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuBD = new javax.swing.JMenu();
+        jMenuCliente = new javax.swing.JMenuItem();
+        jMenuProveedor = new javax.swing.JMenuItem();
+        jMenuProducto = new javax.swing.JMenuItem();
+        jMenuBicicleta = new javax.swing.JMenuItem();
+        jMenuMoto = new javax.swing.JMenuItem();
+        jMenuIntencion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,37 +57,37 @@ public class Graphics extends javax.swing.JFrame {
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Base de datos");
+        jMenuBD.setText("Base de datos");
 
-        jMenuItem1.setText("Cliente");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuCliente.setText("Cliente");
+        jMenuCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuClienteActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem1);
+        jMenuBD.add(jMenuCliente);
 
-        jMenuItem2.setText("Proveedor");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuProveedor.setText("Proveedor");
+        jMenuProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuProveedorActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenuBD.add(jMenuProveedor);
 
-        jMenuItem3.setText("Producto");
-        jMenu2.add(jMenuItem3);
+        jMenuProducto.setText("Producto");
+        jMenuBD.add(jMenuProducto);
 
-        jMenuItem4.setText("Bicicleta");
-        jMenu2.add(jMenuItem4);
+        jMenuBicicleta.setText("Bicicleta");
+        jMenuBD.add(jMenuBicicleta);
 
-        jMenuItem5.setText("Motocicleta Electrica");
-        jMenu2.add(jMenuItem5);
+        jMenuMoto.setText("Motocicleta Electrica");
+        jMenuBD.add(jMenuMoto);
 
-        jMenuItem6.setText("Intencion de Compra");
-        jMenu2.add(jMenuItem6);
+        jMenuIntencion.setText("Intencion de Compra");
+        jMenuBD.add(jMenuIntencion);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuBD);
 
         setJMenuBar(jMenuBar1);
 
@@ -111,14 +115,14 @@ public class Graphics extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void jMenuProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProveedorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_jMenuProveedorActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void jMenuClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuClienteActionPerformed
         InterfazCliente c = new InterfazCliente();
         c.setVisible(true);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,13 +162,13 @@ public class Graphics extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenuBD;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuBicicleta;
+    private javax.swing.JMenuItem jMenuCliente;
+    private javax.swing.JMenuItem jMenuIntencion;
+    private javax.swing.JMenuItem jMenuMoto;
+    private javax.swing.JMenuItem jMenuProducto;
+    private javax.swing.JMenuItem jMenuProveedor;
     // End of variables declaration//GEN-END:variables
 }
